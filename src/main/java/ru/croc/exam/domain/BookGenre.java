@@ -7,17 +7,9 @@ import javax.persistence.*;
 
 @Data
 @NoArgsConstructor
-@Table(name = "book_genres")
+@Embeddable
 public class BookGenre {
 
-    public BookGenre(Book book, Genre genre) {
-        this.book = book;
-        this.genre = genre;
-    }
-
-    @OneToOne
-    private Book book;
-
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private Genre genre;
 }

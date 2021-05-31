@@ -7,6 +7,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import ru.croc.exam.domain.*;
 import ru.croc.exam.repository.*;
 
+import java.util.ArrayList;
+
 @SpringBootTest
 class ExamApplicationTests {
     @Autowired
@@ -32,10 +34,17 @@ class ExamApplicationTests {
         Assertions.assertNotNull(authorRepository.findById(author.getId()));
 
         Book book = new Book("Book1", author, 99);
+        ArrayList<BookGenre> genresList = new ArrayList<>();
+        BookGenre genre = new BookGenre();
+        genre.setGenre(Genre.HORROR);
+        genresList.add(genre);
+        book.setGenres(genresList);
+
         bookRepository.save(book);
+
         Assertions.assertNotNull(bookRepository.findById(book.getId()));
 
-        BookGenre genre = new BookGenre(book, Genre.HORROR);
+        //BookGenre genre = new BookGenre(book, Genre.HORROR);
         // ??
 
         Buyer buyer = new Buyer("Vasiliy");
