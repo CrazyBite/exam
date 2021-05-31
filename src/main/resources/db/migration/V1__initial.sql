@@ -55,7 +55,7 @@ create table book_order
     book_id  integer
         constraint fk__book_order__book
             references books,
-    order_id integer
+    order_fk integer
         constraint fk__book_order__order
             references orders
 );
