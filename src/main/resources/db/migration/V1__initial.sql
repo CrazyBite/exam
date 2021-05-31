@@ -1,6 +1,6 @@
 create table authors
 (
-    id          bigserial      not null
+    id          integer      not null
         constraint authors_pk
             primary key,
     first_name  varchar(255) not null,
@@ -11,11 +11,11 @@ create table authors
 
 create table books
 (
-    id     bigserial      not null
+    id     integer      not null
         constraint book_pk
             primary key,
     name   varchar(255) not null,
-    author bigint
+    author integer
         constraint fk__author
             references authors,
     cost   integer
@@ -24,7 +24,7 @@ create table books
 -- embeddable
 create table book_genres
 (
-    book_id bigserial
+    book_id integer
         constraint fk__book_genre
             references books,
     genre   varchar(255) -- enum
@@ -32,7 +32,7 @@ create table book_genres
 
 create table buyers
 (
-    id   bigserial      not null
+    id   integer      not null
         constraint buyers_pk
             primary key,
     name varchar(255) not null
@@ -40,11 +40,11 @@ create table buyers
 
 create table orders
 (
-    id         bigserial not null
+    id         integer not null
         constraint orders_pk
             primary key,
     create_date timestamp,
-    buyer      bigserial
+    buyer      integer
         constraint fk__buyers
             references buyers,
     sum        integer
@@ -62,7 +62,7 @@ create table book_order
 
 create table online_orders
 (
-    id      bigserial not null
+    id      integer not null
         constraint online_orders_pk
             references orders
         primary key,

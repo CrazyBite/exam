@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 @SpringBootTest
 class ExamApplicationTests {
+
     @Autowired
     private AuthorRepository authorRepository;
 
@@ -22,10 +23,6 @@ class ExamApplicationTests {
 
     @Autowired
     private OrderRepository orderRepository;
-
-    @Test
-    void contextLoads() {
-    }
 
     @Test
     public void testEnitities(){
