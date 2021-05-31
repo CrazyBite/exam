@@ -1,20 +1,15 @@
 package ru.croc.exam.domain;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
 @Table(name = "online_orders")
-public class OnlineOrder {
-
-    @Id
-    @GeneratedValue
-    private Integer id;
+public class OnlineOrder extends Order {
 
     private String address;
 }

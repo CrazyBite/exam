@@ -8,6 +8,8 @@ import ru.croc.exam.domain.*;
 import ru.croc.exam.repository.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 @SpringBootTest
 class ExamApplicationTests {
@@ -23,6 +25,9 @@ class ExamApplicationTests {
 
     @Autowired
     private OrderRepository orderRepository;
+
+    @Autowired
+    private OnlineOrderRepository onlineOrderRepository;
 
     @Test
     public void testEnitities(){
@@ -41,9 +46,6 @@ class ExamApplicationTests {
 
         Assertions.assertNotNull(bookRepository.findById(book.getId()));
 
-        //BookGenre genre = new BookGenre(book, Genre.HORROR);
-        // ??
-
         Buyer buyer = new Buyer("Vasiliy");
         buyerRepository.save(buyer);
         Assertions.assertNotNull(buyerRepository.findById(buyer.getId()));
@@ -52,7 +54,14 @@ class ExamApplicationTests {
         orderRepository.save(order);
         Assertions.assertNotNull(orderRepository.findById(order.getId()));
 
+        OnlineOrder onlineOrder = new OnlineOrder();
+        onlineOrder.setAddress("223");
+        onlineOrder.setBuyer(buyer);
+        onlineOrder.setSum(111);
+        onlineOrder.setBooks(Collections.singletonList(book));
 
+        onlineOrderRepository.save(onlineOrder);
+        Assertions.assertNotNull(onlineOrderRepository.findById(onlineOrder.getId()));
 
     }
 
