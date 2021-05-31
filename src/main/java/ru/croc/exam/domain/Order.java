@@ -24,7 +24,7 @@ public class Order {
     private Long id;
 
     @CreatedDate
-    private Date createDate;
+    private Timestamp createDate;
 
     @OneToOne
     @JoinColumn(name = "buyer")

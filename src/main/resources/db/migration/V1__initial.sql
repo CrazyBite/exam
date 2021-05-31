@@ -44,7 +44,7 @@ create table orders
         constraint orders_pk
             primary key,
     create_date timestamp,
-    buyer      integer
+    buyer      bigserial
         constraint fk__buyers
             references buyers,
     sum        integer

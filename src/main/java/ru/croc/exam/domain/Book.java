@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -28,4 +29,7 @@ public class Book {
     private Author author;
 
     private Integer cost;
+    
+    @ElementCollection
+    private List<BookGenre> genres;
 }
