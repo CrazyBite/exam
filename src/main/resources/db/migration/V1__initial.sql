@@ -4,8 +4,8 @@ create table authors
         constraint authors_pk
             primary key,
     first_name  varchar(255) not null,
-    middle_name varchar(255) not null,
-    last_name   varchar(255) not null
+    middle_name varchar(255),
+    last_name   varchar(255)
 
 );
 
@@ -14,7 +14,7 @@ create table books
     id     integer      not null
         constraint book_pk
             primary key,
-    name   varchar(255) not null,
+    name   varchar(500) not null,
     author integer
         constraint fk__author
             references authors,
