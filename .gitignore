@@ -1,5 +1,6 @@
 HELP.md
 target/
+src/main/java/ru/croc/exam/service/impl/ignore/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
