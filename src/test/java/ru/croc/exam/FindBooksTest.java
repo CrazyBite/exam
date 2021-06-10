@@ -1,9 +1,9 @@
 package ru.croc.exam;
 
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import com.yannbriancon.interceptor.HibernateQueryInterceptor;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -29,13 +29,9 @@ public class FindBooksTest {
     @Autowired
     BooksService service;
 
-    @Autowired
-    private HibernateQueryInterceptor hibernateQueryInterceptor;
-
     @ParameterizedTest
     @ValueSource(ints = {5, 10, 500})
     public void test1(int size) {
-        hibernateQueryInterceptor.startQueryCount();
 
         Genre fantasy = Genre.FANTASY;
 
@@ -48,26 +44,20 @@ public class FindBooksTest {
                     .map(BookGenre::getGenre)
                     .anyMatch(fantasy::equals));
         }
-        assertTrue(hibernateQueryInterceptor.getQueryCount() <= 7);
     }
 
     @ParameterizedTest
     @MethodSource("data_method")
     public void test2(Genre genre, int count) {
-        hibernateQueryInterceptor.startQueryCount();
         Integer booksByGenreCount = service.getBooksByGenreCount(genre);
         assertEquals(count, booksByGenreCount);
-        assertTrue(hibernateQueryInterceptor.getQueryCount() <= 1);
     }
 
     @Test
     public void test3() {
-        hibernateQueryInterceptor.startQueryCount();
-
         List<Book> booksByGenre = service.getBooksByGenre(Genre.FANTASY);
 
         assertEquals(1879, booksByGenre.size());
-        assertTrue(hibernateQueryInterceptor.getQueryCount() <= 2);
     }
 
     private static Stream<Arguments> data_method(){
