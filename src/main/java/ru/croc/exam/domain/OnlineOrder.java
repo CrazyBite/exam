@@ -8,7 +8,6 @@ import javax.persistence.*;
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
-@Table(name = "online_orders")
 public class OnlineOrder extends Order {
 
     private String address;

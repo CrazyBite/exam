@@ -13,7 +13,7 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @Table(name = "orders")
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Order {
 
     public Order(Buyer buyer, Integer sum) {
