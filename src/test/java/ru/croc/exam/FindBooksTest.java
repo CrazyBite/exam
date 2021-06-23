@@ -26,6 +26,10 @@ import java.util.stream.Stream;
 @TestPropertySource(properties = {"spring.jpa.show-sql=false"})
 public class FindBooksTest {
 
+    /**
+     * Реализовать методы сервиса.
+     */
+
     @Autowired
     BooksService service;
 
