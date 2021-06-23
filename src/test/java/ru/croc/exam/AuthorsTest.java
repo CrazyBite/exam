@@ -28,6 +28,12 @@ import java.util.stream.Stream;
 @TestPropertySource(properties = {"spring.jpa.show-sql=true"})
 public class AuthorsTest {
 
+    /**
+     * реализовать сервис.
+     * Поиск по вхождению строки.
+     * Поиск авторов отсортированных по кол-ву книг определённого занра
+     */
+
     @Autowired
     SearchService service;
 
