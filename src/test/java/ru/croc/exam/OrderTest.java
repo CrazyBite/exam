@@ -38,6 +38,11 @@ import java.util.concurrent.ConcurrentHashMap;
 })
 public class OrderTest {
 
+    /**
+     * Реализовать методы сервиса OrderService
+     * Добавление кники с пересчётом суммы заказа
+     */
+
     @Rule
     public ConcurrentRule concurrently = new ConcurrentRule();
     @Rule

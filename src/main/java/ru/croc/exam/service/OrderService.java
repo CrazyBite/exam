@@ -15,7 +15,7 @@ public interface OrderService {
 
     public List<Book> getBooksForOrderId(Integer id);
 
-    public Order addBook(Integer id, Book book);
+    public Order addBook(Integer orderId, Book book);
 
     public Integer getSumByOrderId(Integer id);
 
