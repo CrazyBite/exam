@@ -29,6 +29,14 @@ public class ConstraintsTest {
     @Autowired
     BuyerService service;
 
+    /**
+    * Надо написать скрипт миграции. Колонка not null age для всех покупателей.
+     * По умолчанию заполнить -1
+     *
+     * Добавить валидацию на возраст (18; 99)
+     * Добавить валидацию на имя - не пустое
+    * */
+
     @Test
     public void test1() {
         int buyerAge = service.getBuyerAgeById(11);
