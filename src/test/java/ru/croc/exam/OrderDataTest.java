@@ -91,7 +91,7 @@ public class OrderDataTest {
     @ValueSource(ints = {5, 10, 136, 500, 744})
     public void test2(int id) {
 
-        Collection<Order> ordersById = service.getOrdersById(repository.getById(id));
+        Collection<Order> ordersById = service.getOrdersByBuyer(repository.getById(id));
 
         for (Order order : ordersById) {
             logger.info(order.getBuyer().getName());

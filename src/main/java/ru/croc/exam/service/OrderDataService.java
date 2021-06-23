@@ -9,6 +9,6 @@ public interface OrderDataService {
 
     Order getOrderDataById(Integer id);
 
-    Collection<Order> getOrdersById(Buyer buyer);
+    Collection<Order> getOrdersByBuyer(Buyer buyer);
 
 }
