@@ -35,6 +35,11 @@ import javax.transaction.Transactional;
 @TestPropertySource(properties = {"spring.jpa.show-sql=true", "spring.jpa.properties.hibernate.generate_statistics=false"})
 public class OrderDataTest {
 
+
+    /**
+     * Реализовать сервисы, так чтобы тесты проходили.
+     */
+
     @Autowired
     OrderDataService service;
 
