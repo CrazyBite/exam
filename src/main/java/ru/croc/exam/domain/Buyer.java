@@ -5,6 +5,9 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Data
@@ -20,6 +23,9 @@ public class Buyer {
     @GeneratedValue
     private Integer id;
 
+    @NotNull
+    @Min(18)
+    @Max(98)
     private Integer age; // 18 > 99
 
     @Column(nullable = false)

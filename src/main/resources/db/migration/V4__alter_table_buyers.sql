@@ -1,1 +1,1 @@
-alter table buyers add column age int default 0;
+alter table buyers add column age int not null default -1;
