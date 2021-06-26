@@ -40,7 +40,7 @@ public class Book {
 
     private Integer cost;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @JoinTable(name = "book_genres",
             joinColumns = @JoinColumn(name = "book_id"))
     private List<BookGenre> genres;

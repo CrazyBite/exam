@@ -2,6 +2,7 @@ package ru.croc.exam.domain;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
 
@@ -19,5 +20,8 @@ public class Buyer {
     @GeneratedValue
     private Integer id;
 
-    private String name;
+    private Integer age; // 18 > 99
+
+    @Column(nullable = false)
+    private String name; // not null
 }
