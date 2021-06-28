@@ -41,9 +41,13 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     @Transactional
-    @Synchronized
     public Order addBook(Integer id, Book book) {
-        return addBookForSync(id, book);
+        Order order = orderRepository.findById(id).get();
+        Set<Book> books = order.getBooks();
+        books.add(book);
+        order.setBooks(books);
+        order.setSum(books.stream().map(Book::getCost).reduce(0, Integer::sum));
+        return orderRepository.save(order);
     }
 
     @Override
@@ -53,12 +57,4 @@ public class OrderServiceImpl implements OrderService {
         return sum != null ? sum : 0;
     }
 
-    private Order addBookForSync(Integer id, Book book) {
-        Order order = orderRepository.findById(id).get();
-        Set<Book> books = order.getBooks();
-        books.add(book);
-        order.setBooks(books);
-        order.setSum(books.stream().map(Book::getCost).reduce(0, Integer::sum));
-        return orderRepository.save(order);
-    }
 }

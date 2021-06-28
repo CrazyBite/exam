@@ -12,6 +12,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -23,6 +24,7 @@ import ru.croc.exam.repository.BuyerRepository;
 import ru.croc.exam.repository.OrderRepository;
 import ru.croc.exam.service.OrderService;
 
+import javax.persistence.OptimisticLockException;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -78,9 +80,13 @@ public class OrderTest {
     public void runsMultipleTimes() {
         Integer id = ids.get(rnd.nextInt(ids.size()));
         Book book = bookRepository.findById(rnd.nextInt(15452) + 1).get();
-        Order order = service.addBook(id, book);
-        ordersSum.put(order, ordersSum.get(order) + book.getCost());
-        ordersCount.put(order, ordersCount.get(order) + 1);
+        try {
+            Order order = service.addBook(id, book);
+            ordersSum.put(order, ordersSum.get(order) + book.getCost());
+            ordersCount.put(order, ordersCount.get(order) + 1);
+        }catch (ObjectOptimisticLockingFailureException ignored) {
+        }
+
     }
 
     @AfterClass

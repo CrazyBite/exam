@@ -1,6 +1,5 @@
 package ru.croc.exam.domain;
 
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 
@@ -15,6 +14,8 @@ import javax.persistence.*;
 @Inheritance(strategy = InheritanceType.JOINED)
 
 public class Order {
+    @Version
+    private Integer version;
 
     public Order(Buyer buyer, Integer sum) {
         this.buyer = buyer;
@@ -91,6 +92,14 @@ public class Order {
     @Override
     public int hashCode() {
         return id;
+    }
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
     }
 
     @Override
