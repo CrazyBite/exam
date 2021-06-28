@@ -6,6 +6,7 @@ import ru.croc.exam.domain.Buyer;
 import ru.croc.exam.domain.Order;
 
 import java.util.List;
+import java.util.Set;
 
 public interface OrderService {
 
@@ -13,7 +14,7 @@ public interface OrderService {
 
     public Order getOrderById(Integer id);
 
-    public List<Book> getBooksForOrderId(Integer id);
+    public Set<Book> getBooksForOrderId(Integer id);
 
     public Order addBook(Integer orderId, Book book);
 

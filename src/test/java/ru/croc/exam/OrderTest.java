@@ -15,6 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 import ru.croc.exam.domain.Book;
 import ru.croc.exam.domain.Order;
 import ru.croc.exam.repository.BookRepository;
@@ -22,10 +23,7 @@ import ru.croc.exam.repository.BuyerRepository;
 import ru.croc.exam.repository.OrderRepository;
 import ru.croc.exam.service.OrderService;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 
@@ -58,13 +56,15 @@ public class OrderTest {
     static List<Integer> ids = new ArrayList<>();
 
     @Autowired
-    public void prepare(BuyerRepository buyerRepository, BookRepository bookRepository, OrderRepository orderRepository, OrderService service) {
+    public void prepare(BuyerRepository buyerRepository,
+                        BookRepository bookRepository,
+                        OrderRepository orderRepository,
+                        OrderService service) {
         for (int i = 0; i < 20; i++) {
             Order newOrder = service.createNewOrder(buyerRepository.getById(72));
             ordersSum.put(newOrder, 0);
             ordersCount.put(newOrder, 0);
             ids.add(newOrder.getId());
-
         }
 
         OrderTest.service = service;

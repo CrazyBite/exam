@@ -17,7 +17,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Data
 @NoArgsConstructor
 @Table(name = "books")
 public class Book {
@@ -44,4 +43,44 @@ public class Book {
     @JoinTable(name = "book_genres",
             joinColumns = @JoinColumn(name = "book_id"))
     private List<BookGenre> genres;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
+
+    public Integer getCost() {
+        return cost == null ? 0 : cost;
+    }
+
+    public void setCost(Integer cost) {
+        this.cost = cost;
+    }
+
+    public List<BookGenre> getGenres() {
+        return genres;
+    }
+
+    public void setGenres(List<BookGenre> genres) {
+        this.genres = genres;
+    }
 }
